@@ -1,21 +1,26 @@
-/* eslint-disable @next/next/no-img-element */
-import Nav from "../components/nav";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Nav from "../../components/nav";
 import web3modal from "web3modal"
 import { ethers } from "ethers"
 import axios from "axios";
-import { contractAddress } from "../address.js"; 
-import contractAbi from "../artifacts/contracts/mood.sol/mood.json";
-import Link from "next/link";
+import { contractAddress } from "../../address.js"; 
+import contractAbi from "../../artifacts/contracts/mood.sol/mood.json";
 
-export default function Developer() {
-
+export default function NFTs() {
+    const router = useRouter()
+    const { id } = router.query
+    
     const [cards, setCards] = useState([])
     const [loaded, setLoaded] = useState(false)
 
-    useEffect(() => {
-        fetch()
-    }, [])
+    useEffect(()=> {
+        if (id) {
+            fetch()
+        }
+    }, [id])
+
     
     async function fetch() {
         const modal = new web3modal(); 
@@ -40,10 +45,9 @@ export default function Developer() {
                 };
                 return item;
             })
-            );
+        );
             
-            // console.log(items);
-            setCards(items);
+        setCards(items[id]);
         setLoaded(true);
     }
     
@@ -57,21 +61,12 @@ export default function Developer() {
             </div>
         )
     }
-    
-    if(loaded == true && !cards.length) {
-        return(
-            <div>
-                <Nav />
-                <h2>Nothing minted yet!</h2>
-            </div>
-        )
-    }
-    return(        
+    if(loaded==true)
+    return(
         <div>
             <Nav />
-            {cards.map( (card, i) => (
-                <Link key={i} href={`/developer/${card.tokenId-1}`}><a><Card cover={card.cover} name={card.name} price={card.price} description={card.description} /></a></Link>
-            ))}
+            {/* {console.log(cards)} */}
+            <Card cover={cards.cover} name={cards.name} price={cards.price} description={cards.description} />
         </div>
     )
 }
