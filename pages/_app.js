@@ -18,31 +18,31 @@ function MyApp({ Component, pageProps }) {
 
   // ------------
 
-  const avalancheChain = {
-    id: 43_114,
-    name: 'Avalanche',
-    network: 'avalanche',
+  const CSC = {
+    id: 53,
+    name: 'CoinEx Smart Chain Testnet',
+    network: 'CoinEx Smart Chain Testnet',
     nativeCurrency: {
       decimals: 18,
-      name: 'Avalanche',
-      symbol: 'AVAX',
+      name: 'CETT',
+      symbol: 'CETT',
     },
     rpcUrls: {
-      default: 'https://api.avax.network/ext/bc/C/rpc',
+      default: 'https://testnet-rpc.coinex.net/',
     },
     blockExplorers: {
-      default: { name: 'SnowTrace', url: 'https://snowtrace.io' },
+      default: { name: 'CoinEx Smart Chain Explorer', url: 'https://testnet.coinex.net/' },
     },
-    testnet: false,
+    testnet: true,
   }
 
   const { chains, provider } = configureChains(
-    [avalancheChain],
+    [CSC],
     [
       infuraProvider({ apiKey: '1dbc3ef8703a4669a5cda4f7de7343bc'}),
       jsonRpcProvider({
         rpc: (chain) => {
-          if (chain.id !== avalancheChain.id) return null
+          if (chain.id !== CSC.id) return null
           return { http: chain.rpcUrls.default }
         },
       }),
@@ -64,10 +64,10 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <WagmiConfig client={wagmiClient}>
-    <RainbowKitProvider chains={chains}>
-      <Component {...pageProps} />
-    </RainbowKitProvider>
-  </WagmiConfig>
+      <RainbowKitProvider chains={chains} >
+        <Component {...pageProps} />
+      </RainbowKitProvider>
+    </WagmiConfig>
   )
 }
 

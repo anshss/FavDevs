@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155URIStorage.sol";
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol";
 
-contract Agora is ERC1155URIStorage, ERC1155Holder {
+contract Mood is ERC1155URIStorage, ERC1155Holder {
     
     address payable owner;
 
@@ -24,7 +24,7 @@ contract Agora is ERC1155URIStorage, ERC1155Holder {
         uint256 price;
         uint256 supply;
         uint256 supplyleft;
-        string category;
+        string name;
     }
 
     event nftCreated(
@@ -51,20 +51,20 @@ contract Agora is ERC1155URIStorage, ERC1155Holder {
     function createToken(
         string memory tokenURI,
         uint256 price,
-        string memory category
+        string memory name
     ) public payable {
         _tokenId.increment();
         uint256 currentToken = _tokenId.current();
         _mint(msg.sender, currentToken, 10000, "");
         _setURI(currentToken, tokenURI);
-        createnft(currentToken, 10000, price, category);
+        createnft(currentToken, 10000, price, name);
     }
 
     function createnft(
         uint256 tokenId,
         uint256 supply,
         uint256 price,
-        string memory category
+        string memory name
     ) private {
         idTonft[tokenId] = nft(
             tokenId,
@@ -73,7 +73,7 @@ contract Agora is ERC1155URIStorage, ERC1155Holder {
             price,
             supply,
             supply,
-            category
+            name
         );
 
         _safeTransferFrom(msg.sender, address(this), tokenId, supply, "");
@@ -146,27 +146,5 @@ contract Agora is ERC1155URIStorage, ERC1155Holder {
                 }
             }
             return myBooks;
-    }
-
-    function fetchMyListings() public view returns (nft[] memory) {
-        uint counter = 0;
-        uint length;
-
-        for (uint i = 0; i < _tokenId.current(); i++) {
-            if (idTonft[i+1].creator == msg.sender) {
-                length++;
-            }
-        }
-
-        nft[] memory myListedBooks = new nft[](length);
-        for (uint i = 0; i < _tokenId.current(); i++) {
-            if (idTonft[i+1].creator == msg.sender) {
-                uint currentId = i+1;
-                nft storage currentItem = idTonft[currentId];
-                myListedBooks[counter] = currentItem;
-                counter++;
-            }
-        }
-        return myListedBooks;
     }
 }
