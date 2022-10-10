@@ -7,6 +7,7 @@ import { ethers } from "ethers"
 import axios from "axios";
 import { contractAddress } from "../../address.js"; 
 import contractAbi from "../../artifacts/contracts/mood.sol/mood.json";
+import styles from "../../styles/Id.module.css"
 
 export default function NFTs() {
     const router = useRouter()
@@ -63,10 +64,11 @@ export default function NFTs() {
     }
     if(loaded==true)
     return(
-        <div>
+        <div className={styles.container}>
             <Nav />
-            {/* {console.log(cards)} */}
-            <Card cover={cards.cover} name={cards.name} price={cards.price} description={cards.description} />
+            <div className={styles.id}>
+                <Card cover={cards.cover} name={cards.name} price={cards.price} description={cards.description} />
+            </div>
         </div>
     )
 }

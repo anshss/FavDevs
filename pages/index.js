@@ -1,35 +1,38 @@
-
 import styles from '../styles/Home.module.css'
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 export default function Home() {
 
-  // const [connected, setConnected] = useState(false);
+  const [connected, setConnected] = useState(false);
 
-  // if(window != undefined) {
-  //   window.onload = () => {
-  //     isConnected();
-  //   }
-  // }
+  useEffect(() => {
+    setInterval(isConnected, 1000);
+    
+  }, [])
         
-  // async function isConnected() {
-  //   if(window.ethereum){
-  //     const accounts = await ethereum.request({method: 'eth_accounts'});       
-  //     if (accounts.length) {
-  //       setConnected(true);
-  //     }
-  //   }
-  // }
+  async function isConnected() {
+    if(window != undefined){
+      if(window.ethereum){
+        const accounts = await ethereum.request({method: 'eth_accounts'});       
+        if (accounts.length) {
+          setConnected(true);
+        }
+      }
+    }
+    else{
+      setConnected(false);
+    }
+  }
 
   return(
     <div className={styles.container}>
-      <h1>NFT For Everyone</h1>
-      <h2>Connect you wallet now and mint your own Nfts</h2>
-      <ConnectButton accountStatus="address" showBalance={false}/>
-      {/* <div>{connected ? (<button className={styles.goAhead} />) : (<button className={styles.goAhead} disabled/>)}</div> */}
-      <Link href="/mint">Go Ahead</Link>
+      <h1 className={styles.heading}>NFT For Everyone</h1>
+      <h2 className={styles.subHeading}>Connect you wallet now and mint your own Nfts</h2>
+      <ConnectButton className={styles.connectButton} accountStatus="address" showBalance={false}/>
+      <Link href="/mint"><div>{connected ? (<button className={styles.goAhead} >Go Ahead</button>) : (<button className={styles.goAhead} disabled >Go Ahead</button>)}</div></Link>
+
     </div>
   )
 }

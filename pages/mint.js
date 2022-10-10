@@ -6,6 +6,7 @@ import { useRouter} from "next/router";
 import { Web3Storage } from 'web3.storage'
 import { contractAddress } from "../address.js"; 
 import contractAbi from "../artifacts/contracts/mood.sol/mood.json";
+import styles from "../styles/Mint.module.css"
 
 export default function Mint() {
 
@@ -76,20 +77,19 @@ export default function Mint() {
     }
 
     return(
-        <div>
+        <div className={styles.container}>
             <Nav />
-            <h2>Mint Your Developer NFT Now!</h2>
-            <div>
+            <div className={styles.mint}>
+            <h2 className={styles.heading}>Mint Your Developer NFT Now!</h2>
                 <p>Name:</p>
-                <input name="name" required type="text" onChange={(e) => setDetails({...details, name: e.target.value})} />
+                <input name="name" className={styles.input} required type="text" onChange={(e) => setDetails({...details, name: e.target.value})} />
                 <p>Work:</p>
-                <input name="work" required type="text"  onChange={(e) => setDetails({...details, work: e.target.value})} />
+                <input name="work" className={styles.input} required type="text"  onChange={(e) => setDetails({...details, work: e.target.value})} />
                 <p>Price:</p>
-                <input name="price" required type="text"  onChange={(e) => setDetails({...details, price: e.target.value})} />
+                <input name="price" className={styles.input} required type="text"  onChange={(e) => setDetails({...details, price: e.target.value})} />
                 <p>Cover:</p>
-                <input name="cover" id="cover" required type="file" onChange={handleCover} />
-
-                <button onClick={mint}> Mint!</button>
+                <input name="cover" className={styles.input} id="cover" required type="file" onChange={handleCover} />
+                <button className={styles.mintBtn} onClick={mint}> Mint!</button>
             </div>
         </div>
     )

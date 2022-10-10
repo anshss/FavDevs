@@ -6,6 +6,7 @@ import axios from "axios";
 import { contractAddress } from "../address.js"; 
 import contractAbi from "../artifacts/contracts/mood.sol/mood.json";
 import Link from "next/link";
+import styles from "../styles/Supporting.module.css"
 
 export default function Supporting() {
 
@@ -58,18 +59,22 @@ export default function Supporting() {
 
     if(loaded == true && !cards.length) {
         return(
-            <div>
+            <div className={styles.container}>
                 <Nav />
-                <h2>Go to <Link href="/developer" >developer</Link> page to support anyone</h2>
+                <div className={styles.cardDiv}>
+                    <h2>Go to <Link href="/developer" >developer</Link> page to support anyone</h2>
+                </div>
             </div>
         )
     }
     return(
-        <div>
+        <div className={styles.container}>
             <Nav />
-            {cards.map( (card, i) => (
-                <Card key={i} cover={card.cover} name={card.name} price={card.price} description={card.description} />
-            ))}
+            <div className={styles.cardDiv}>
+                {cards.map( (card, i) => (
+                    <Card key={i} cover={card.cover} name={card.name} price={card.price} description={card.description} />
+                ))}
+            </div>
         </div>
     )
 }

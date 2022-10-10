@@ -1,0 +1,8 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.cardDiv{
+    padding-left: 5%;
+}

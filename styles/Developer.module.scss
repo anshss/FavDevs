@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.cardDiv {
+    padding-left: 5%;
+    display: flex;
+    flex-direction: row;
+    // justify-content: center;
+    // align-items: center;
+    
+}
+
+.card {
+    background-color: grey;
+    // padding: 2rem;
+}

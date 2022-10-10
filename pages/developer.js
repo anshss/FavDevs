@@ -7,6 +7,7 @@ import axios from "axios";
 import { contractAddress } from "../address.js"; 
 import contractAbi from "../artifacts/contracts/mood.sol/mood.json";
 import Link from "next/link";
+import styles from "../styles/Developer.module.scss"
 
 export default function Developer() {
 
@@ -49,7 +50,7 @@ export default function Developer() {
     
     function Card(prop) {
         return(
-            <div>
+            <div className={styles.card}>
                 <img src={prop.cover} width="200px" height="200px" />
                 <p>{prop.name}</p>
                 <p>{prop.price}</p>
@@ -67,11 +68,13 @@ export default function Developer() {
         )
     }
     return(        
-        <div>
+        <div className={styles.container}>
             <Nav />
-            {cards.map( (card, i) => (
-                <Link key={i} href={`/developer/${card.tokenId-1}`}><a><Card cover={card.cover} name={card.name} price={card.price} description={card.description} /></a></Link>
-            ))}
+            <div className={styles.cardDiv}>
+                {cards.map( (card, i) => (
+                    <Link key={i} href={`/developer/${card.tokenId-1}`}><a><Card cover={card.cover} name={card.name} price={card.price} description={card.description} /></a></Link>
+                ))}
+            </div>
         </div>
     )
 }

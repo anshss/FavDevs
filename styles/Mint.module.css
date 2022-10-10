@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.mint {
+    padding-left: 5%;
+    font-size: 150%;
+}
+
+.heading {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.input {
+    height: 2rem;
+    width: 20rem;
+}
+
+.mintBtn {
+    width: 5rem;
+    height: 2rem;
+}
