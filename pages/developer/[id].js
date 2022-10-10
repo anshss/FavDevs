@@ -51,6 +51,8 @@ export default function NFTs() {
         setCards(items[id]);
         setLoaded(true);
     }
+
+    async function Buy() {}
     
     function Card(prop) {
         return(
@@ -59,6 +61,7 @@ export default function NFTs() {
                 <p>{prop.name}</p>
                 <p>{prop.price}</p>
                 <p>{prop.description}</p>
+                <button onClick={Buy} >Buy Now</button>
             </div>
         )
     }
