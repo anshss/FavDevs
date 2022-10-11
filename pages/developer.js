@@ -52,16 +52,16 @@ export default function Developer() {
         return(
             <div className={styles.card}>
                 <img src={prop.cover} width="200px" height="200px" />
-                <p>{prop.name}</p>
-                <p>{prop.price}</p>
-                <p>{prop.description}</p>
+                <p>Name: {prop.name}</p>
+                <p>Price: {prop.price}</p>
+                <p>Works: {prop.description}</p>
             </div>
         )
     }
     
     if(loaded == true && !cards.length) {
         return(
-            <div>
+            <div className={styles.container}>
                 <Nav />
                 <h2>Nothing minted yet!</h2>
             </div>

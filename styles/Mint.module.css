@@ -1,11 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 .container {
+    font-family: 'Montserrat', sans-serif;
     display: flex;
     flex-direction: row;
+    color: black;
+    background-color: #171d1f;
 }
-
 .mint {
-    padding-left: 5%;
+    width: 50%;
+    margin-left: 20%;
+    background: #f8f4e5;
+
+    box-shadow: 30px 30px #ffa580;
+
+    padding: 5rem;
     font-size: 150%;
+    text-align: center;
+    align-self: center;
 }
 
 .heading {
@@ -14,11 +26,20 @@
 }
 
 .input {
-    height: 2rem;
-    width: 20rem;
+    height: 3rem;
+    width: 35rem;
+    border-radius: 3rem;
+    text-align: center;
 }
 
+.textarea {
+    width: 35rem;
+    border-radius: 20px;
+    padding: 7px;
+}
 .mintBtn {
-    width: 5rem;
-    height: 2rem;
+    width: 6rem;
+    padding: 0.6rem;
+    font-size: 1.2rem;
+    background-color:#171d1f;
 }

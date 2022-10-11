@@ -62,7 +62,7 @@ export default function Supporting() {
             <div className={styles.container}>
                 <Nav />
                 <div className={styles.cardDiv}>
-                    <h2>Go to <Link href="/developer" >developer</Link> page to support anyone</h2>
+                    <h2>Go to developer page to support anyone</h2>
                 </div>
             </div>
         )

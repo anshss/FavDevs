@@ -1,18 +1,37 @@
 .container {
     display: flex;
     flex-direction: row;
+    text-align: left;
+    color: #486473;
+    font-size: large;
+    background-color: #171d1f;
+}
+.span {
+    font-weight: bold;
+    padding-left: 20px;
+}
+.card:hover {
+    transition: 0.5s;
+    transform: scale(1.05);
 }
 
 .cardDiv {
+    padding-top: 2rem;
     padding-left: 5%;
     display: flex;
     flex-direction: row;
-    // justify-content: center;
-    // align-items: center;
-    
 }
 
 .card {
-    background-color: grey;
-    // padding: 2rem;
+    background-color: #ffa580;
+    padding-bottom: 15px;
+    p{
+        padding-left: 1.5rem;
+    }
 }
+.card img {
+    width: 20rem;
+    height: auto;
+}
+
+

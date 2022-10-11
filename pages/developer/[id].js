@@ -7,7 +7,7 @@ import { ethers } from "ethers"
 import axios from "axios";
 import { contractAddress } from "../../address.js"; 
 import contractAbi from "../../artifacts/contracts/mood.sol/mood.json";
-import styles from "../../styles/Id.module.css"
+import styles from "../../styles/Id.module.scss"
 
 export default function NFTs() {
     const router = useRouter()
@@ -52,16 +52,30 @@ export default function NFTs() {
         setLoaded(true);
     }
 
-    async function Buy() {}
+    async function buy(item) {
+        const modal = new web3modal();
+        const connection = await modal.connect();
+        const provider = new ethers.providers.Web3Provider(connection);
+        const signer = provider.getSigner();
+        const contract = new ethers.Contract(contractAddress, contractAbi.abi, signer)
+        const price = ethers.utils.parseUnits(item.price.toString(), "ether");
+        console.log(price, item.tokenId)
+        const transaction = await contract.buy(item.tokenId, {
+            value: price,
+            gasLimit: 1000000,
+        });
+        await transaction.wait();
+    }
+
     
     function Card(prop) {
         return(
-            <div>
+            <div className={styles.card}>
                 <img src={prop.cover} width="200px" height="200px" />
                 <p>{prop.name}</p>
                 <p>{prop.price}</p>
                 <p>{prop.description}</p>
-                <button onClick={Buy} >Buy Now</button>
+                <button onClick={() => buy(prop)} >Buy Now</button>
             </div>
         )
     }
@@ -69,8 +83,8 @@ export default function NFTs() {
     return(
         <div className={styles.container}>
             <Nav />
-            <div className={styles.id}>
-                <Card cover={cards.cover} name={cards.name} price={cards.price} description={cards.description} />
+            <div className={styles.cardDiv}>
+                <Card cover={cards.cover} name={cards.name} price={cards.price} description={cards.description} tokenId={cards.tokenId} />
             </div>
         </div>
     )
