@@ -13,8 +13,8 @@ module.exports = {
       url: `https://testnet-rpc.coinex.net`, 
       accounts: [privateKey],
     },
-    mumbai: { 
-      url: `https://black-fittest-tab.matic-testnet.discover.quiknode.pro/${quicknode}/`, 
+    goerli: { 
+      url: `https://patient-white-energy.ethereum-goerli.discover.quiknode.pro/${quicknode}/`, 
       accounts: [privateKey],
     }, 
   }, 
