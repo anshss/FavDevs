@@ -46,3 +46,7 @@ typechain-types
 cache
 artifacts
 
+
+.vercel
+.secret
+.quicknode

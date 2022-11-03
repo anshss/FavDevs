@@ -5,7 +5,7 @@ import web3modal from "web3modal"
 import { ethers } from "ethers"
 import axios from "axios";
 import { contractAddress } from "../address.js"; 
-import contractAbi from "../artifacts/contracts/mood.sol/mood.json";
+import contractAbi from "../artifacts/contracts/FavDevs.sol/FavDevs.json";
 import Link from "next/link";
 import styles from "../styles/Developer.module.scss"
 

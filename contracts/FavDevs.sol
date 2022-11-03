@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155URIStorage.sol";
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol";
 
-contract Mood is ERC1155URIStorage, ERC1155Holder {
+contract FavDevs is ERC1155URIStorage, ERC1155Holder {
     
     address payable owner;
 

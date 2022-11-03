@@ -1,6 +1,7 @@
 require("@nomiclabs/hardhat-waffle"); 
 const fs = require('fs'); 
 const privateKey = fs.readFileSync(".secret").toString()
+const quicknode = fs.readFileSync(".quicknode").toString()
 
 module.exports = { 
   defaultNetwork : "hardhat", 
@@ -8,9 +9,13 @@ module.exports = {
     hardhat: { 
       chainId: 1337 
     }, 
-    csc: { 
+    csc: {
       url: `https://testnet-rpc.coinex.net`, 
-      accounts: [privateKey] 
+      accounts: [privateKey],
+    },
+    mumbai: { 
+      url: `https://black-fittest-tab.matic-testnet.discover.quiknode.pro/${quicknode}/`, 
+      accounts: [privateKey],
     }, 
   }, 
   solidity: { 

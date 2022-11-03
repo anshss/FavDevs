@@ -5,7 +5,7 @@ import Nav from "../components/nav";
 import { useRouter} from "next/router";
 import { Web3Storage } from 'web3.storage'
 import { contractAddress } from "../address.js"; 
-import contractAbi from "../artifacts/contracts/mood.sol/mood.json";
+import contractAbi from "../artifacts/contracts/FavDevs.sol/FavDevs.json";
 import styles from "../styles/Mint.module.css"
 
 export default function Mint() {

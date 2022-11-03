@@ -28,7 +28,7 @@ export default function Home() {
 
   return(
     <div className={styles.container}>
-      <h1 className={styles.heading}>NFT For Everyone</h1>
+      <h1 className={styles.heading}>Support your Favourite Developer</h1>
       <h2 className={styles.subHeading}>Connect you wallet now and mint your own Nfts</h2>
       <ConnectButton className={styles.connectButton} accountStatus="address" showBalance={false}/>
       <Link href="/mint"><div>{connected ? (<button className={styles.goAhead} >Go Ahead</button>) : (<button className={styles.goAhead} disabled >Go Ahead</button>)}</div></Link>
